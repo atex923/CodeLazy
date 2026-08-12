@@ -1,5 +1,6 @@
 ./.gitignore
 ./CODEX_TRANSFER.md
+./CodeLazy_V0.1.5.py
 ./CodeLazy_V0.1.5.pyw
 ./LICENSE
 ./Nuitka_單一EXE打包.bat
