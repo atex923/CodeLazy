@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-APP_PATH = ROOT / "CodeLazy_V0.1.9.pyw"
+APP_PATH = ROOT / "CodeLazy_V0.1.10.pyw"
 
 
 def load_app():
@@ -39,7 +39,7 @@ class DataStoreTests(unittest.TestCase):
             }
         )
 
-        self.assertEqual(data["app_version"], "V0.1.9")
+        self.assertEqual(data["app_version"], "V0.1.10")
         self.assertEqual(data["records"][0]["version"], [2, 3, 99])
         self.assertNotIn("title", data["records"][0])
         self.assertTrue(data["records"][0]["id"])
@@ -161,6 +161,12 @@ class DataStoreTests(unittest.TestCase):
         self.assertEqual([record["id"] for record in store.data["records"]], ["c", "a", "b"])
         self.assertEqual([record["item"] for record in store.data["records"]], ["1", "2", "3"])
         self.assertNotEqual(store.record_by_id("c")["updated_at"], "2026-08-12T00:00:00+00:00")
+
+    def test_version_jump_rules_reset_lower_segments(self):
+        self.assertEqual(app.step_version([0, 9, 8], 0, 1), [1, 1, 0])
+        self.assertEqual(app.step_version([0, 1, 9], 1, 1), [0, 2, 0])
+        self.assertEqual(app.step_version([0, 1, 9], 2, 1), [0, 1, 10])
+        self.assertEqual(app.step_version([2, 3, 4], 1, -1), [2, 2, 4])
 
 
 if __name__ == "__main__":
