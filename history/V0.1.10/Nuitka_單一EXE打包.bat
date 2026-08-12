@@ -23,12 +23,12 @@ py -3.13 -m nuitka ^
   --enable-plugin=pyside6 ^
   --assume-yes-for-downloads ^
   --output-dir=Nuitka_Output ^
-  --output-filename=CodeLazy_V0.1.11.exe ^
+  --output-filename=CodeLazy_V0.1.10.exe ^
   --product-name="程式創作室" ^
   --file-description="程式開發管理工具" ^
-  --file-version=0.1.11.0 ^
-  --product-version=0.1.11.0 ^
-  "CodeLazy_V0.1.11.pyw"
+  --file-version=0.1.10.0 ^
+  --product-version=0.1.10.0 ^
+  "CodeLazy_V0.1.10.pyw"
 
 if errorlevel 1 (
     echo.
@@ -38,6 +38,6 @@ if errorlevel 1 (
 )
 
 echo.
-echo 打包完成：Nuitka_Output\CodeLazy_V0.1.11.exe
+echo 打包完成：Nuitka_Output\CodeLazy_V0.1.10.exe
 pause
 endlocal
