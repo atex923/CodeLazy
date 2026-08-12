@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-APP_PATH = ROOT / "CodeLazy_V0.1.7.pyw"
+APP_PATH = ROOT / "CodeLazy_V0.1.8.pyw"
 
 
 def load_app():
@@ -39,7 +39,7 @@ class DataStoreTests(unittest.TestCase):
             }
         )
 
-        self.assertEqual(data["app_version"], "V0.1.7")
+        self.assertEqual(data["app_version"], "V0.1.8")
         self.assertEqual(data["records"][0]["version"], [2, 3, 99])
         self.assertNotIn("title", data["records"][0])
         self.assertTrue(data["records"][0]["id"])

@@ -1,4 +1,4 @@
-CodeLazy V0.1.8 / 程式創作室
+CodeLazy V0.1.7 / 程式創作室
 
 快速啟動：
 1. 安裝 Python 3.13。
