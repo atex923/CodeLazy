@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-APP_PATH = ROOT / "CodeLazy_V0.1.6.pyw"
+APP_PATH = ROOT / "CodeLazy_V0.1.7.pyw"
 
 
 def load_app():
@@ -39,7 +39,7 @@ class DataStoreTests(unittest.TestCase):
             }
         )
 
-        self.assertEqual(data["app_version"], "V0.1.6")
+        self.assertEqual(data["app_version"], "V0.1.7")
         self.assertEqual(data["records"][0]["version"], [2, 3, 99])
         self.assertNotIn("title", data["records"][0])
         self.assertTrue(data["records"][0]["id"])
@@ -146,6 +146,21 @@ class DataStoreTests(unittest.TestCase):
         self.assertEqual((added, changed, removed), (1, 0, 1))
         self.assertIsNone(store.record_by_id("remove"))
         self.assertEqual([record["item"] for record in store.data["records"]], ["1", "2"])
+
+    def test_move_record_reorders_items_and_updates_target(self):
+        store = app.DataStore(Path("unused.json"))
+        store.data["records"] = [
+            {"id": "a", "item": "1", "name": "A", "updated_at": "2026-08-12T00:00:00+00:00"},
+            {"id": "b", "item": "2", "name": "B", "updated_at": "2026-08-12T00:00:00+00:00"},
+            {"id": "c", "item": "3", "name": "C", "updated_at": "2026-08-12T00:00:00+00:00"},
+        ]
+
+        moved = store.move_record("c", 0)
+
+        self.assertTrue(moved)
+        self.assertEqual([record["id"] for record in store.data["records"]], ["c", "a", "b"])
+        self.assertEqual([record["item"] for record in store.data["records"]], ["1", "2", "3"])
+        self.assertNotEqual(store.record_by_id("c")["updated_at"], "2026-08-12T00:00:00+00:00")
 
 
 if __name__ == "__main__":
