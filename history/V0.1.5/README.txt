@@ -1,4 +1,4 @@
-CodeLazy V0.1.6 / 程式創作室
+CodeLazy V0.1.5 / 程式創作室
 
 快速啟動：
 1. 安裝 Python 3.13。
@@ -10,8 +10,6 @@ CodeLazy V0.1.6 / 程式創作室
 同步設定：
 預設輸出至 Y:\我的雲端硬碟\12.Codex\CodeLazy_sync.txt。
 若雲端硬碟路徑不同，可設定 CODELAZY_SYNC_FOLDER 指向同步資料夾。
-同步右側「+」可自選同步紀錄檔，程式會記住最後一次選取的位置。
-也可以把 .txt 或 .json 同步紀錄檔拖曳到視窗中載入。
 
 交給 Codex 繼續修改時，請連同整個資料夾一起提供，
 並請 Codex 先閱讀 CODEX_TRANSFER.md。

@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-APP_PATH = ROOT / "CodeLazy_V0.1.5.pyw"
+APP_PATH = ROOT / "CodeLazy_V0.1.6.pyw"
 
 
 def load_app():
@@ -39,7 +39,7 @@ class DataStoreTests(unittest.TestCase):
             }
         )
 
-        self.assertEqual(data["app_version"], "V0.1.5")
+        self.assertEqual(data["app_version"], "V0.1.6")
         self.assertEqual(data["records"][0]["version"], [2, 3, 99])
         self.assertNotIn("title", data["records"][0])
         self.assertTrue(data["records"][0]["id"])
@@ -72,6 +72,40 @@ class DataStoreTests(unittest.TestCase):
                     os.environ.pop(app.SYNC_FOLDER_ENV, None)
                 else:
                     os.environ[app.SYNC_FOLDER_ENV] = previous
+
+    def test_settings_remembers_last_sync_file_and_folder(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            settings_path = Path(tmp) / app.SETTINGS_FILE_NAME
+            sync_path = Path(tmp) / "custom" / "sync.json"
+            sync_path.parent.mkdir()
+
+            settings = app.AppSettings(settings_path)
+            settings.remember_sync_file(sync_path)
+
+            loaded = app.AppSettings(settings_path)
+            loaded.load()
+
+            self.assertEqual(loaded.sync_file_path(), sync_path)
+            self.assertEqual(loaded.dialog_folder(), sync_path.parent)
+
+    def test_export_sync_file_writes_custom_file_path(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            sync_path = Path(tmp) / "picked" / "CodeLazy_sync.json"
+            store = app.DataStore(Path(tmp) / app.DATA_FILE_NAME)
+            store.data["records"].append(
+                {
+                    "id": "custom",
+                    "item": "1",
+                    "name": "Custom",
+                    "updated_at": "2026-08-12T00:00:00+00:00",
+                }
+            )
+
+            ok, detail = store.export_sync_file(sync_path)
+
+            self.assertTrue(ok, detail)
+            self.assertEqual(Path(detail), sync_path)
+            self.assertEqual(json.loads(sync_path.read_text(encoding="utf-8"))["records"][0]["id"], "custom")
 
     def test_merge_prefers_newer_remote_delete_and_reindexes_items(self):
         store = app.DataStore(Path("unused.json"))

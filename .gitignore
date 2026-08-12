@@ -1,5 +1,6 @@
 CodeLazy_data.json
 CodeLazy_sync.txt
+CodeLazy_settings.json
 *.broken_*.json
 *.tmp
 __pycache__/
