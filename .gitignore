@@ -1,0 +1,10 @@
+CodeLazy_data.json
+CodeLazy_sync.txt
+*.broken_*.json
+*.tmp
+__pycache__/
+.pytest_cache/
+Nuitka_Output/
+*.build/
+*.dist/
+*.onefile-build/
