@@ -4,20 +4,20 @@
 
 - 程式名稱：CodeLazy
 - 視窗標題：程式創作室
-- 現行版本：V0.1.9
-- 主程式：`CodeLazy_V0.1.9.pyw`
+- 現行版本：V0.1.8
+- 主程式：`CodeLazy_V0.1.8.pyw`
 - 開發語言：Python 3.13
 - GUI：PySide6
 - 平台：Windows 10／11
 
-## V0.1.9 更新重點
+## V0.1.8 更新重點
 
-- 版號由 V0.1.8 升級至 V0.1.9。
+- 版號由 V0.1.7 升級至 V0.1.8。
 - 啟動批次檔、Nuitka 打包檔、EXE 輸出名稱與版本資訊同步更新。
-- 修正拖曳項次移位後整行從畫面消失、重開後才恢復的問題。
-- 內部項次移位不再使用 `QTableWidget` 內建拖放/移動列，改由 `mousePressEvent()` / `mouseReleaseEvent()` 判斷來源與目標列。
-- `ProjectTable` 仍保留外部 `.txt` / `.json` 同步檔拖曳載入。
-- GitHub root 保留最新版；V0.1.8 完整來源移至 `history/V0.1.8/`。
+- 修正拖曳項次移位後表格文字暫時消失、重開後才恢復顯示的問題。
+- `ProjectTable.dropEvent()` 改為用 `QTimer.singleShot(0, ...)` 延後發出重排訊號，讓 Qt drop 事件先完成。
+- 表格刷新改為 `rebuild_table()`，先清空內容與 row count，再完整重建每一格。
+- GitHub root 保留最新版；V0.1.7 完整來源移至 `history/V0.1.7/`。
 
 ## 執行方式
 
@@ -57,7 +57,7 @@
 
 ## 版本規則
 
-- 一般修正或小功能增加第三碼，例如 V0.1.9 → V0.1.10。
+- 一般修正或小功能增加第三碼，例如 V0.1.8 → V0.1.9。
 - 較大的功能或架構變更才增加第二碼。
 - 修改版本時需同步更新：
   - 主程式 `APP_VERSION`
@@ -68,7 +68,7 @@
 
 ## 驗證清單
 
-- 執行 `python3 -m py_compile CodeLazy_V0.1.9.py CodeLazy_V0.1.9.pyw`。
+- 執行 `python3 -m py_compile CodeLazy_V0.1.8.py CodeLazy_V0.1.8.pyw`。
 - 執行 `python3 -m unittest discover -s tests -v`。
 - 測試新增、修改、刪除與刪除後重新編號。
 - 測試左側清單拖曳移位後項次重新編號，且畫面文字立即顯示。
