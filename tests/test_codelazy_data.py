@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-APP_PATH = ROOT / "CodeLazy_V0.1.11.pyw"
+APP_PATH = ROOT / "CodeLazy_V0.1.12.pyw"
 
 
 def load_app():
@@ -39,12 +39,18 @@ class DataStoreTests(unittest.TestCase):
             }
         )
 
-        self.assertEqual(data["app_version"], "V0.1.11")
+        self.assertEqual(data["app_version"], "V0.1.12")
         self.assertEqual(data["records"][0]["version"], [2, 3, 99])
         self.assertNotIn("title", data["records"][0])
         self.assertTrue(data["records"][0]["id"])
         self.assertIn("gone-id", data["deleted"])
         self.assertNotIn("", data["deleted"])
+
+    def test_has_visible_note_ignores_blank_notes(self):
+        self.assertFalse(app.has_visible_note(""))
+        self.assertFalse(app.has_visible_note("   \n\t"))
+        self.assertFalse(app.has_visible_note(None))
+        self.assertTrue(app.has_visible_note("待確認同步流程"))
 
     def test_export_sync_uses_environment_folder_override(self):
         with tempfile.TemporaryDirectory() as tmp:
