@@ -1,4 +1,4 @@
-# CodeLazy V0.1.13 / 程式創作室
+# CodeLazy V0.1.14 / 程式創作室
 
 CodeLazy 是給個人開發者使用的程式開發資料管理工具，用 PySide6 製作成 Windows 桌面程式，集中記錄每個小工具的名稱、檔名、初開發名稱、建立日期、最新版號、修改方式、說明與備註。
 
@@ -13,6 +13,7 @@ CodeLazy 是給個人開發者使用的程式開發資料管理工具，用 PySi
 - 儲存後鎖定基本資料與說明，鎖定文字仍保持黑色方便閱讀，並保留最新版號、修改方式、備註可快速更新。
 - 左側清單支援搜尋項次、名稱、檔名、初開發名稱、說明與備註。
 - 本機資料以 UTF-8 JSON 儲存在程式旁的 `CodeLazy_data.json`。
+- 工具列提供「另存資料庫」，可將完整資料庫另存為 JSON，並記住上次使用的資料夾。
 - 另存 `CodeLazy_sync.txt` 作為跨電腦同步交換檔，內容為 JSON。
 - 儲存時若同步來源資料夾不存在，會先把同步檔存到程式所在資料夾。
 - 同步時依每筆 UUID 與 `updated_at` 合併，較新的資料與刪除狀態優先。
@@ -32,7 +33,7 @@ CodeLazy 是給個人開發者使用的程式開發資料管理工具，用 PySi
 雙擊 `Nuitka_單一EXE打包.bat`，成功後會產生：
 
 ```text
-Nuitka_Output\CodeLazy_V0.1.13.exe
+Nuitka_Output\CodeLazy_V0.1.14.exe
 ```
 
 ## 同步路徑
@@ -51,6 +52,6 @@ set CODELAZY_SYNC_FOLDER=D:\GoogleDrive\我的雲端硬碟\12.Codex
 
 ## 倉庫規則
 
-GitHub root 只保留目前最新版 V0.1.13 的程式與文件。舊版完整來源收在 `history/Vx.y.z/`，索引見 `history/README.md`。
+GitHub root 只保留目前最新版 V0.1.14 的程式與文件。舊版完整來源收在 `history/Vx.y.z/`，索引見 `history/README.md`。
 
 使用者資料檔 `CodeLazy_data.json`、同步檔 `CodeLazy_sync.txt` 與本機設定檔 `CodeLazy_settings.json` 不納入公開倉庫。
