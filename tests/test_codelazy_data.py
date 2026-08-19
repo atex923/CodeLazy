@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-APP_PATH = ROOT / "CodeLazy_V0.1.12.pyw"
+APP_PATH = ROOT / "CodeLazy_V0.1.13.pyw"
 
 
 def load_app():
@@ -39,7 +39,7 @@ class DataStoreTests(unittest.TestCase):
             }
         )
 
-        self.assertEqual(data["app_version"], "V0.1.12")
+        self.assertEqual(data["app_version"], "V0.1.13")
         self.assertEqual(data["records"][0]["version"], [2, 3, 99])
         self.assertNotIn("title", data["records"][0])
         self.assertTrue(data["records"][0]["id"])
@@ -97,6 +97,7 @@ class DataStoreTests(unittest.TestCase):
     def test_export_sync_file_writes_custom_file_path(self):
         with tempfile.TemporaryDirectory() as tmp:
             sync_path = Path(tmp) / "picked" / "CodeLazy_sync.json"
+            sync_path.parent.mkdir()
             store = app.DataStore(Path(tmp) / app.DATA_FILE_NAME)
             store.data["records"].append(
                 {
@@ -112,6 +113,27 @@ class DataStoreTests(unittest.TestCase):
             self.assertTrue(ok, detail)
             self.assertEqual(Path(detail), sync_path)
             self.assertEqual(json.loads(sync_path.read_text(encoding="utf-8"))["records"][0]["id"], "custom")
+
+    def test_export_sync_file_falls_back_when_source_folder_is_missing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            missing_sync_path = Path(tmp) / "missing" / "CodeLazy_sync.json"
+            fallback_path = Path(tmp) / "CodeLazy_sync.txt"
+            store = app.DataStore(Path(tmp) / app.DATA_FILE_NAME)
+            store.data["records"].append(
+                {
+                    "id": "fallback",
+                    "item": "1",
+                    "name": "Fallback",
+                    "updated_at": "2026-08-19T00:00:00+00:00",
+                }
+            )
+
+            ok, detail = store.export_sync_file(missing_sync_path, fallback=fallback_path)
+
+            self.assertTrue(ok, detail)
+            self.assertEqual(Path(detail), fallback_path)
+            self.assertFalse(missing_sync_path.exists())
+            self.assertEqual(json.loads(fallback_path.read_text(encoding="utf-8"))["records"][0]["id"], "fallback")
 
     def test_merge_prefers_newer_remote_delete_and_reindexes_items(self):
         store = app.DataStore(Path("unused.json"))

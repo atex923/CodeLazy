@@ -1,7 +1,7 @@
 ./.gitignore
 ./CODEX_TRANSFER.md
-./CodeLazy_V0.1.12.py
-./CodeLazy_V0.1.12.pyw
+./CodeLazy_V0.1.13.py
+./CodeLazy_V0.1.13.pyw
 ./LICENSE
 ./Nuitka_單一EXE打包.bat
 ./README.md
@@ -22,6 +22,13 @@
 ./history/V0.1.11/README.txt
 ./history/V0.1.11/requirements.txt
 ./history/V0.1.11/啟動_CodeLazy.bat
+./history/V0.1.12/CODEX_TRANSFER.md
+./history/V0.1.12/CodeLazy_V0.1.12.py
+./history/V0.1.12/CodeLazy_V0.1.12.pyw
+./history/V0.1.12/Nuitka_單一EXE打包.bat
+./history/V0.1.12/README.txt
+./history/V0.1.12/requirements.txt
+./history/V0.1.12/啟動_CodeLazy.bat
 ./history/V0.1.4/CODEX_TRANSFER.md
 ./history/V0.1.4/CodeLazy_V0.1.4.pyw
 ./history/V0.1.4/Nuitka_單一EXE打包.bat
