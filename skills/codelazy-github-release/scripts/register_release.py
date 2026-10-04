@@ -19,6 +19,12 @@ def repository_name(value):
     return value
 
 
+def filename_key(value):
+    basename = str(value or "").replace("\\", "/").rsplit("/", 1)[-1]
+    stem = re.sub(r"\.(pyw?|swift|app|exe)$", "", basename, flags=re.IGNORECASE)
+    return re.split(r"[_\- ]*[vV]\d+\.\d+\.\d+(?=$|[_\- .])", stem, maxsplit=1)[0].strip().casefold()
+
+
 def register(database, repo, name, version, category, filename="", published_at=None, commit=""):
     database = Path(database)
     repo = repository_name(repo)
@@ -36,15 +42,17 @@ def register(database, repo, name, version, category, filename="", published_at=
     records = data["records"]
     if not isinstance(records, list) or not isinstance(data.get("deleted"), dict):
         raise ValueError("Invalid CodeLazy database")
-    matches = []
-    for record in records:
-        bound = record.get("github_repo", "")
-        if bound and repository_name(bound).casefold() == repo.casefold():
-            matches.append(record)
+    key = filename_key(filename)
+    matches = [r for r in records if key and filename_key(r.get("filename")) == key]
+    if any(r.get("github_repo") and repository_name(r["github_repo"]).casefold() != repo.casefold()
+           for r in matches):
+        raise ValueError("Filename belongs to another repository; database was not changed")
+    if not matches:
+        matches = [r for r in records if r.get("github_repo")
+                   and repository_name(r["github_repo"]).casefold() == repo.casefold()]
     if not matches:
         matches = [r for r in records if not r.get("github_repo") and (
             str(r.get("name", "")).casefold() == name.casefold()
-            or (filename and Path(str(r.get("filename", ""))).stem.casefold() == Path(filename).stem.casefold())
         )]
     if len(matches) > 1:
         raise ValueError("Ambiguous project match; database was not changed")

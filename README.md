@@ -2,6 +2,12 @@
 
 CodeLazy 是給個人開發者使用的程式開發資料管理工具，用 PySide6 製作成 Windows 桌面程式，集中記錄每個小工具的名稱、檔名、初開發名稱、建立日期、最新版號、修改方式、說明與備註。
 
+## 最新版
+
+- [CodeLazy V0.2.0 主程式](CodeLazy_V0.2.0.py)、[Windows 啟動版本](CodeLazy_V0.2.0.pyw)
+- [程式創作室資料庫更新技能](skills/codelazy-github-release/SKILL.md)
+- 指令「更新程式創作室資料庫」依版號前檔名更新原紀錄，保留名稱與備註；不會自動發佈或同步版本資料夾。
+
 ## 主要特色
 
 - GitHub 發佈登記後，開啟中的程式自動刷新資料；未儲存編輯保留並在儲存時合併。
@@ -59,5 +65,7 @@ set CODELAZY_SYNC_FOLDER=D:\GoogleDrive\我的雲端硬碟\12.Codex
 ## 倉庫規則
 
 GitHub root 只保留目前最新版 V0.2.0 的程式與文件。舊版完整來源收在 `history/Vx.y.z/`，索引見 `history/README.md`。
+
+[版本歷史](history/README.md)、[發佈說明](RELEASE_NOTES.md)、[資料庫登記修正紀錄](REGISTRATION_FIX_NOTES.md)。
 
 使用者資料檔 `CodeLazy_data.json`、同步檔 `CodeLazy_sync.txt` 與本機設定檔 `CodeLazy_settings.json` 不納入公開倉庫。

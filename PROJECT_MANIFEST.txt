@@ -6,6 +6,7 @@
 ./Nuitka_單一EXE打包.bat
 ./README.md
 ./README.txt
+./REGISTRATION_FIX_NOTES.md
 ./RELEASE_NOTES.md
 ./history/README.md
 ./history/V0.1.10/CODEX_TRANSFER.md
