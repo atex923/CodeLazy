@@ -21,5 +21,5 @@ if errorlevel 1 (
     )
 )
 
-start "" pyw -3.13 "CodeLazy_V0.2.0.pyw"
+start "" pyw -3.13 "CodeLazy_V0.1.14.pyw"
 endlocal

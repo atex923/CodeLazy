@@ -1,14 +1,8 @@
-# CodeLazy V0.2.0 / 程式創作室
+# CodeLazy V0.1.14 / 程式創作室
 
 CodeLazy 是給個人開發者使用的程式開發資料管理工具，用 PySide6 製作成 Windows 桌面程式，集中記錄每個小工具的名稱、檔名、初開發名稱、建立日期、最新版號、修改方式、說明與備註。
 
 ## 主要特色
-
-- GitHub 發佈登記後，開啟中的程式自動刷新資料；未儲存編輯保留並在儲存時合併。
-
-- 分類檢視 iOS、macOS、PY、其他，右鍵可將項目移到其他分類。
-- 工具列上下鍵可調整項次；GitHub 庫名、最後發佈日期與版號可直接維護。
-- 六行高說明欄；附 codelazy-github-release 技能供跨專案發佈登記。
 
 - macOS 玻璃感無邊框介面，視窗標題置中，視窗控制鈕位於右側。
 - 開發項目自動連號；刪除或同步後會重新整理項次。
@@ -39,7 +33,7 @@ CodeLazy 是給個人開發者使用的程式開發資料管理工具，用 PySi
 雙擊 `Nuitka_單一EXE打包.bat`，成功後會產生：
 
 ```text
-Nuitka_Output\CodeLazy_V0.2.0.exe
+Nuitka_Output\CodeLazy_V0.1.14.exe
 ```
 
 ## 同步路徑
@@ -58,6 +52,6 @@ set CODELAZY_SYNC_FOLDER=D:\GoogleDrive\我的雲端硬碟\12.Codex
 
 ## 倉庫規則
 
-GitHub root 只保留目前最新版 V0.2.0 的程式與文件。舊版完整來源收在 `history/Vx.y.z/`，索引見 `history/README.md`。
+GitHub root 只保留目前最新版 V0.1.14 的程式與文件。舊版完整來源收在 `history/Vx.y.z/`，索引見 `history/README.md`。
 
 使用者資料檔 `CodeLazy_data.json`、同步檔 `CodeLazy_sync.txt` 與本機設定檔 `CodeLazy_settings.json` 不納入公開倉庫。
