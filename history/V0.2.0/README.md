@@ -1,16 +1,14 @@
-# CodeLazy V0.2.1 / 程式創作室
+# CodeLazy V0.2.0 / 程式創作室
 
 CodeLazy 是給個人開發者使用的程式開發資料管理工具，用 PySide6 製作成 Windows 桌面程式，集中記錄每個小工具的名稱、檔名、初開發名稱、建立日期、最新版號、修改方式、說明與備註。
 
 ## 最新版
 
-- [CodeLazy V0.2.1 主程式](CodeLazy_V0.2.1.py)、[Windows 啟動版本](CodeLazy_V0.2.1.pyw)
+- [CodeLazy V0.2.0 主程式](CodeLazy_V0.2.0.py)、[Windows 啟動版本](CodeLazy_V0.2.0.pyw)
 - [程式創作室資料庫更新技能](skills/codelazy-github-release/SKILL.md)
 - 指令「更新程式創作室資料庫」依版號前檔名更新原紀錄，保留名稱與備註；不會自動發佈或同步版本資料夾。
 
 ## 主要特色
-
-- V0.2.1 修正修改檔名後儲存可能被舊資料覆蓋，正確合併不同時區的更新時間。
 
 - GitHub 發佈登記後，開啟中的程式自動刷新資料；未儲存編輯保留並在儲存時合併。
 
@@ -47,7 +45,7 @@ CodeLazy 是給個人開發者使用的程式開發資料管理工具，用 PySi
 雙擊 `Nuitka_單一EXE打包.bat`，成功後會產生：
 
 ```text
-Nuitka_Output\CodeLazy_V0.2.1.exe
+Nuitka_Output\CodeLazy_V0.2.0.exe
 ```
 
 ## 同步路徑
@@ -66,7 +64,7 @@ set CODELAZY_SYNC_FOLDER=D:\GoogleDrive\我的雲端硬碟\12.Codex
 
 ## 倉庫規則
 
-GitHub root 只保留目前最新版 V0.2.1 的程式與文件。舊版完整來源收在 `history/Vx.y.z/`，索引見 `history/README.md`。
+GitHub root 只保留目前最新版 V0.2.0 的程式與文件。舊版完整來源收在 `history/Vx.y.z/`，索引見 `history/README.md`。
 
 [版本歷史](history/README.md)、[發佈說明](RELEASE_NOTES.md)、[資料庫登記修正紀錄](REGISTRATION_FIX_NOTES.md)。
 

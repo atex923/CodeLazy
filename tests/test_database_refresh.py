@@ -50,6 +50,25 @@ class DatabaseRefreshTests(unittest.TestCase):
         self.assertEqual(self.window.version_edit.value(), [0, 2, 0])
         self.assertEqual(self.window.current_id, "demo")
 
+    def test_edit_filename_save_and_reload_across_timezones(self):
+        path = self.window.store.local_path
+        data = json.loads(path.read_text())
+        data["records"][0].update(filename="Old.py", updated_at="2026-10-04T14:00:00+08:00")
+        path.write_text(json.dumps(data))
+        self.window.refresh_external_database()
+        self.window.load_record("demo")
+        self.window.toggle_full_edit()
+        self.window.file_edit.setText("Changed.py")
+        with patch.object(app, "utc_now", return_value="2026-10-04T06:01:00.000001+00:00"), \
+             patch.object(self.window, "export_current_sync", return_value=(True, "test")):
+            self.window.save_record()
+        self.assertEqual(self.window.file_edit.text(), "Changed.py")
+        saved = json.loads(path.read_text())
+        self.assertEqual(saved["records"][0]["filename"], "Changed.py")
+        reopened = app.DataStore(path)
+        reopened.load()
+        self.assertEqual(reopened.record_by_id("demo")["filename"], "Changed.py")
+
     def test_dirty_form_preserves_note_and_latest_publication(self):
         self.window.note_edit.setPlainText("New note")
         self.external_update()

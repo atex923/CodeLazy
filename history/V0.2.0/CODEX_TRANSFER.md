@@ -4,22 +4,19 @@
 
 - 程式名稱：CodeLazy
 - 視窗標題：程式創作室
-- 現行版本：V0.2.1
-- 主程式：`CodeLazy_V0.2.1.pyw`
+- 現行版本：V0.2.0
+- 主程式：`CodeLazy_V0.2.0.pyw`
 - 開發語言：Python 3.13
 - GUI：PySide6
 - 平台：Windows 10／11
 
-## V0.2.1 更新重點
-
-- 修正檔名儲存：合併時間改為實際時間排序，新增儲存及重讀回歸測試。
-- 下列分類與發佈功能延續 V0.2.0；V0.2.0 已封存至 history/V0.2.0/。
+## V0.2.0 更新重點
 
 - 外部發佈登記更新資料庫後，程式每秒檢查並自動刷新選取項目與清單。
 - 有未儲存編輯時延後刷新；儲存會合併外部資料並保留未手動更改的最新版號與發佈欄位。
 - 2026-10-04 使用者要求同步及發佈；發布完成後以技能更新本機 CodeLazy 登記。
 
-- 版號由 V0.1.14 升級至 V0.2.1。
+- 版號由 V0.1.14 升級至 V0.2.0。
 - 啟動批次檔、Nuitka 打包檔、EXE 輸出名稱與版本資訊同步更新。
 - 工具列新增「另存資料庫」，可自選位置輸出完整 UTF-8 JSON 資料庫。
 - 若目前表單有尚未儲存的內容，會先儲存目前項目再另存資料庫。
@@ -34,7 +31,7 @@
 
 ## 現有功能
 
-- V0.2.1 新增 category、github_repo、published_at、published_version、published_commit，保留舊欄位與 UUID。
+- V0.2.0 新增 category、github_repo、published_at、published_version、published_commit，保留舊欄位與 UUID。
 - 分類為 iOS/macOS/PY/其他，舊資料預設 PY；全部檢視方便舊流程。
 - 發佈日期未設定時顯示尚未發佈；既有完整時間戳在日期未修改時保留。
 - skills/codelazy-github-release 供 GitHub 成功發佈後更新資料庫，寫入前先備份。
@@ -77,7 +74,7 @@
 
 ## 版本規則
 
-- 一般修正或小功能增加第三碼，例如 V0.1.13 → V0.2.1。
+- 一般修正或小功能增加第三碼，例如 V0.1.13 → V0.2.0。
 - 較大的功能或架構變更才增加第二碼。
 - 修改版本時需同步更新：
   - 主程式 `APP_VERSION`
@@ -88,7 +85,7 @@
 
 ## 驗證清單
 
-- 執行 `python3 -m py_compile CodeLazy_V0.2.1.py CodeLazy_V0.2.1.pyw`。
+- 執行 `python3 -m py_compile CodeLazy_V0.2.0.py CodeLazy_V0.2.0.pyw`。
 - 執行 `python3 -m unittest discover -s tests -v`。
 - 測試新增、修改、刪除與刪除後重新編號。
 - 測試備註只有空白時不標色，有實際文字時才標成粉紅底色。
